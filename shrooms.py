@@ -20,25 +20,14 @@ def train_predict(learner, sample_size, X_train, y_train, X_test, y_test):
 
     results = {}
 
-    # start = time()  # Get start time
     learner = learner.fit(X_train[:sample_size], y_train[:sample_size])
-    # end = time()  # Get end time
 
-    # results['train_time'] = end - start
-
-    # start = time()  # Get start time
     predictions_test = learner.predict(X_test)
     predictions_train = learner.predict(X_train[:300])
-    # end = time()  # Get end time
-
-    # results['pred_time'] = end - start
 
     results['acc_train'] = accuracy_score(y_train[:300], predictions_train)
-
     results['acc_test'] = accuracy_score(y_test, predictions_test)
-
     results['f_train'] = fbeta_score(y_train[:300], predictions_train, beta=0.5)
-
     results['f_test'] = fbeta_score(y_test, predictions_test, beta=0.5)
 
     print("{} trained on {} samples.".format(learner.__class__.__name__, sample_size))
@@ -47,7 +36,15 @@ def train_predict(learner, sample_size, X_train, y_train, X_test, y_test):
 
 
 data = pd.read_csv("agaricus-lepiota.csv")
-print(data.head())
+
+print(len(data))
+
+for index, row in data.iterrows():
+    for name, values in data.iteritems():
+        if row[name] == '?':
+            data = data.drop(index)
+
+print(len(data))
 
 target = 'class' # The class we want to predict
 labels = data[target]
