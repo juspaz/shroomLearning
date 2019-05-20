@@ -148,5 +148,21 @@ x y n f n f c b w e b y y n n p w t p w y d   EDIBLE
 f y c f m a c b w e c k y c c p w n n w c d   POISONOUS
 '''
 
-train_predict_userInput(clf_A, clf_B, clf_C, features, labels, categorical, categorical2)
+train_predict_userInput(clf_A, clf_B, clf_C, features, labels, categorical, categorical2,5000)
+'''
+edible
+f f e t n f c b n t b s s g w p w o p n y d
+k f c f n f w n w e b f s w n p w o e w v l
+f y c f n f w n w e b f s w n p w o e w v l
+k y c f n f w n w e b s f w n p w o e w v l
+f f n f n f w n w e b s f w n p w o e w v l
+
+poionous
+x y y f f f c b p e b k k p p p w o l h v d
+f f y f f f c b h e b k k n n p w o l h v d
+x s g t f f c b h t b f s w w p w o p h v g
+f y y f f f c b g e b k k n p p w o l h y d
+x s b t f f c b w t b s s w w p w o p h s u
+'''
+
 plt.show()
