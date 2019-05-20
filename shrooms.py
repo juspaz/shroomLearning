@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import fbeta_score, accuracy_score
 from sklearn.model_selection import KFold as kfold
@@ -121,14 +122,7 @@ clf_C = RandomForestClassifier(n_estimators=100, oob_score=True, max_features=5)
 clf_B = KNeighborsClassifier(n_neighbors=100)
 
 
-'''
-Different sets of attributes for testing -> train_predict_userInput(*)
-f y g t n f c b w e b s s w w p w t p w y p   EDIBLE
-x y n f n f c b w e b y y n n p w t p w y d   EDIBLE
-f y c f m a c b w e c k y c c p w n n w c d   POISONOUS
-'''
 
-train_predict_userInput(clf_A, clf_B, clf_C, features, labels, categorical, categorical2)
 
 kf = kfold(n_splits=5,shuffle=True)
 xset = np.array(features)
@@ -147,4 +141,12 @@ for clf in [clf_A, clf_B, clf_C]:
         print(results[clf_name][i])
         i=i+1
         
+'''
+Different sets of attributes for testing -> train_predict_userInput(*)
+f y g t n f c b w e b s s w w p w t p w y p   EDIBLE
+x y n f n f c b w e b y y n n p w t p w y d   EDIBLE
+f y c f m a c b w e c k y c c p w n n w c d   POISONOUS
+'''
+
+train_predict_userInput(clf_A, clf_B, clf_C, features, labels, categorical, categorical2)
 plt.show()
